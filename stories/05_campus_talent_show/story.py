@@ -54,6 +54,12 @@ class Poetry(Performance):  # Shared parent: hierarchical inheritance.
     def duration(self):
         return 4
 
+#Author: Rebecca Nakabanda
+#Extension1: Comedy Duo
+#Comedy inherits from performance and lasts 2 minutes
+class Comedy(Performance):
+    def duration(self):
+        return 2
 
 class ShortDance(Dance):  # Performance -> Dance -> ShortDance: multilevel.
     def duration(self):
