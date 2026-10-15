@@ -92,6 +92,20 @@ class TalentShow:
     def act_count(self):  # Read-only: reflects the actual booked lineup.
         return len(self._lineup)
 
+    def running_order(self):
+        if self._lineup:
+            order = "\n".join(
+                f"{number}. {performance.name}"
+                for number, performance in enumerate(self._lineup, start=1)
+            )
+        else:
+            order = "No acts booked yet."
+        return (
+            f"Running order:\n{order}\n"
+            f"Act count: {self.act_count}\n"
+            f"Minutes left: {self.clock.remaining}"
+        )
+
     def book(self, performance):
         self.performance = performance  # Borrowed part: aggregation.
         minutes = performance.duration()  # Abstraction: MC doesn't count dance steps.
